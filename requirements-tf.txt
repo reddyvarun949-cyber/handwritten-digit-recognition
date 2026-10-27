@@ -1,0 +1,4 @@
+# Optional: needed only for the Keras cells (section 7) and for the API to use the CNN.
+# TensorFlow supports Python 3.10-3.12; Keras 3 is included.
+-r requirements.txt
+tensorflow>=2.16,<2.21

@@ -1,0 +1,166 @@
+/* Simple, readable styles. Colours are defined once here so they are easy to change. */
+:root {
+  --ink: #1b263b;
+  --muted: #5b6577;
+  --accent: #0f766e;
+  --accent-dark: #0b5a54;
+  --danger: #b91c1c;
+  --card: #ffffff;
+  --page: #f3f5f8;
+  --border: #d7dde5;
+  --bar-bg: #e7ebf0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--page);
+}
+
+body {
+  margin: 0;
+}
+
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 16px 64px;
+}
+
+h1 {
+  margin: 0 0 4px;
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1rem;
+  margin: 20px 0 10px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.small {
+  font-size: 0.85rem;
+}
+
+/* two columns on wide screens (drawing | result), one column on phones */
+.layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 24px;
+}
+
+/* the drawing board: shown at most 280px wide, keeps its square shape */
+.board {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  border-radius: 8px;
+  background: #000;
+  cursor: crosshair;
+  touch-action: none; /* stop the page from scrolling while drawing with a finger */
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+button {
+  margin-top: 20px;
+  font: inherit;
+  font-weight: 600;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: #fff;
+  color: var(--ink);
+  border: 1px solid var(--border);
+}
+
+button:hover:not(:disabled) {
+  background: var(--accent-dark);
+  color: #fff;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.alert {
+  margin-top: 20px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: #fdecec;
+  color: var(--danger);
+  border: 1px solid #f5c2c2;
+}
+
+.result .digit {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0;
+  line-height: 1.1;
+}
+
+/* probability bars made with plain divs */
+.bar-row {
+  display: grid;
+  grid-template-columns: 18px 1fr 52px;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+}
+
+.bar-track {
+  height: 14px;
+  background: var(--bar-bg);
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: #94a3b8;
+}
+
+.bar-fill.best {
+  background: var(--accent);
+}
+
+.bar-value {
+  text-align: right;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 8x8 preview of the model input: 64 small squares */
+.preview {
+  display: grid;
+  grid-template-columns: repeat(8, 16px);
+  grid-auto-rows: 16px;
+  gap: 1px;
+  background: #333;
+  width: max-content;
+  padding: 1px;
+}
